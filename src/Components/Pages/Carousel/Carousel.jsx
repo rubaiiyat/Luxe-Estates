@@ -19,9 +19,9 @@ const Carousel = () => {
               <input
                 type="text"
                 placeholder="Your ZIP Code or City"
-                className="input input-bordered input-primary w-96 max-w-xs bg-transparent placeholder-white"
+                className="input input-bordered input-primary w-32 md:w-96 max-w-xs bg-transparent  placeholder-white"
               />
-              <button className="btn  btn-primary text-white bg-transparent text-lg">
+              <button className="btn  btn-primary text-white bg-transparent text-xs md:text-lg">
                 Search
               </button>
             </div>
@@ -47,9 +47,9 @@ const Carousel = () => {
               <input
                 type="text"
                 placeholder="Your ZIP Code or City"
-                className="input input-bordered input-primary w-96 max-w-xs bg-transparent placeholder-white"
+                className="input input-bordered input-primary w-32 md:w-96 max-w-xs bg-transparent placeholder-white"
               />
-              <button className="btn  btn-primary text-white bg-transparent text-lg">
+              <button className="btn  btn-primary text-white bg-transparent text-xs md:text-lg">
                 Search
               </button>
             </div>
@@ -75,9 +75,9 @@ const Carousel = () => {
               <input
                 type="text"
                 placeholder="Your ZIP Code or City"
-                className="input input-bordered input-primary w-96 max-w-xs bg-transparent placeholder-white"
+                className="input input-bordered input-primary w-32 md:w-96 max-w-xs bg-transparent placeholder-white"
               />
-              <button className="btn  btn-primary text-white bg-transparent text-lg">
+              <button className="btn  btn-primary text-white bg-transparent text-xs md:text-lg">
                 Search
               </button>
             </div>
@@ -103,9 +103,9 @@ const Carousel = () => {
               <input
                 type="text"
                 placeholder="Your ZIP Code or City"
-                className="input input-bordered input-primary w-96 max-w-xs bg-transparent placeholder-white"
+                className="input input-bordered input-primary w-32 md:w-96 max-w-xs bg-transparent placeholder-white"
               />
-              <button className="btn  btn-primary text-white bg-transparent text-lg">
+              <button className="btn  btn-primary text-white bg-transparent  text-xs md:text-lg">
                 Search
               </button>
             </div>
