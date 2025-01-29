@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   return (
@@ -10,10 +11,7 @@ const Register = () => {
       <div className=" md:w-96 rounded-2xl mx-auto">
         <form className="bg-base-200 shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-auto">
           <div className="mb-4">
-            <label
-              className="block text-white text-sm font-bold mb-2"
-              htmlFor="username"
-            >
+            <label className="block text-white text-sm font-bold mb-2">
               Full Name
             </label>
             <input
@@ -24,10 +22,18 @@ const Register = () => {
             />
           </div>
           <div className="mb-4">
-            <label
-              className="block text-white text-sm font-bold mb-2"
-              htmlFor="username"
-            >
+            <label className="block text-white text-sm font-bold mb-2">
+              Photo *Url
+            </label>
+            <input
+              type="url"
+              placeholder="Enter The Photo Url"
+              name="photoUrl"
+              className="input input-bordered input-primary w-full "
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-white text-sm font-bold mb-2">
               Email
             </label>
             <input
@@ -38,10 +44,7 @@ const Register = () => {
             />
           </div>
           <div className="mb-6">
-            <label
-              className="block text-white text-sm font-bold mb-2"
-              htmlFor="password"
-            >
+            <label className="block text-white text-sm font-bold mb-2">
               Password
             </label>
             <input
@@ -51,13 +54,16 @@ const Register = () => {
               className="input input-bordered input-primary w-full"
             />
 
-            <a href="#" className="text-white">
-              <p>Forgot Password?</p>
-            </a>
+            <p className="mt-2">
+              Already have an account ?
+              <Link to={"/login"} className="text-primary font-bold mx-1">
+                Login
+              </Link>
+            </p>
           </div>
           <div className="flex items-center justify-center">
             <button
-              className="btn btn-primary text-white text-lg"
+              className="btn btn-primary text-white text-lg w-full"
               type="submit"
             >
               Register
