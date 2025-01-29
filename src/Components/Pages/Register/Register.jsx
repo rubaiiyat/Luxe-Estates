@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { authContext } from "../../AuthProvider/AuthProvider";
 
 const Register = () => {
+  const { createUser } = useContext(authContext);
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+
+    const form = new FormData(e.currentTarget);
+    const name = form.get("name");
+    const url = form.get("url");
+    const email = form.get("email");
+    const password = form.get("password");
+
+    createUser(email, password);
+  };
+
   return (
     <div className="mt-5 mb-10">
       <h1 className="text-center text-white text-4xl mb-5 font-bold">
@@ -9,7 +24,10 @@ const Register = () => {
       </h1>
 
       <div className=" md:w-96 rounded-2xl mx-auto">
-        <form className="bg-base-200 shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-auto">
+        <form
+          onSubmit={handleRegister}
+          className="bg-base-200 shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-auto"
+        >
           <div className="mb-4">
             <label className="block text-white text-sm font-bold mb-2">
               Full Name
