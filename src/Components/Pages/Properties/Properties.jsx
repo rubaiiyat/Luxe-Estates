@@ -11,7 +11,7 @@ const Properties = () => {
         Our Property List
       </h1>
 
-      <div className="flex flex-wrap justify-center gap-5 md:gap-10 lg:gap-20 mt-7">
+      <div className="flex flex-wrap justify-center gap-5 md:gap-10 lg:gap-20 mt-7 mb-20">
         {properties.map((property) => (
           <Property key={property.id} property={property}></Property>
         ))}

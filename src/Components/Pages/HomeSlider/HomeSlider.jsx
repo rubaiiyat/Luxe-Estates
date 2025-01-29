@@ -16,21 +16,21 @@ const Property = ({ property }) => {
     total_bathrooms,
   } = property;
   return (
-    <div>
-      <div className="card bg-base-200 w-80 md:w-96 shadow-xl ">
-        <figure className="px-7 pt-7">
-          <img src={main_image_url} alt={`img${id}`} className="rounded-xl " />
+    <div className="">
+      <div className="card bg-base-200 w-80  shadow-xl p-4">
+        <figure className="px-3 pt-3">
+          <img src={main_image_url} alt={`img${id}`} className="rounded-xl" />
         </figure>
         <div className="card-body ">
-          <h2 className="card-title text-white">{title}</h2>
-          <p className="flex gap-2 items-center">
+          <h2 className="card-title text-white">${price}</h2>
+          <p className="flex gap-2 items-center text-sm">
             <IoLocation /> {short_location}
           </p>
 
           <div className="flex justify-between items-start mt-3 text-lg">
             <div>
               <h1 className="font-bold">Size</h1>
-              <div className="flex gap-2 items-center">
+              <div className="flex gap-2 items-center text-sm">
                 <span className="">
                   <SlSizeFullscreen />
                 </span>{" "}
@@ -39,7 +39,7 @@ const Property = ({ property }) => {
             </div>
             <div>
               <h1 className="font-bold">Room</h1>
-              <div className="flex gap-2 items-center">
+              <div className="flex gap-2 items-center text-sm">
                 <span className="">
                   <IoBedSharp />
                 </span>{" "}
@@ -48,25 +48,12 @@ const Property = ({ property }) => {
             </div>
             <div>
               <h1 className="font-bold">Baths</h1>
-              <div className="flex gap-2 items-center">
+              <div className="flex gap-2 items-center text-sm">
                 <span className="">
                   <FaBath />
                 </span>{" "}
                 {total_bathrooms}
               </div>
-            </div>
-          </div>
-
-          <div className="flex justify-between mt-3 place-items-end">
-            <div>
-              <h1 className="text-lg">For {status}</h1>
-              <h1 className="text-xl font-bold text-white">${price}</h1>
-            </div>
-
-            <div className="card-actions ">
-              <button className="btn btn-primary text-white md:text-lg">
-                View Property
-              </button>
             </div>
           </div>
         </div>
