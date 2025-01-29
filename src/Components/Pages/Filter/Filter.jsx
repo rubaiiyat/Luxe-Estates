@@ -1,33 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Filter = () => {
+  const [selectedCountry, setSelectedCountry] = useState("Australia");
+  const [selectedProperty, setSelectedProperty] = useState("House");
   return (
     <div className="lg:flex flex-wrap  gap-5 items-start justify-center md:justify-between  bg-base-200 p-5 w-full rounded-2xl mb-10 -mt-2">
       <div className="">
         <h1>Location</h1>
-        <select className="select select-primary w-full max-w-xs text-white mt-2">
-          <option disabled selected>
-            Australia
-          </option>
-          <option>Canada</option>
-          <option>France</option>
-          <option>United States</option>
-          <option>New Zealand</option>
-          <option>Norway</option>
-          <option>United Kingdom</option>
-          <option>Italy</option>
-          <option>Japan</option>
+        <select
+          className="select select-primary w-full max-w-xs text-white mt-2"
+          value={selectedCountry}
+          onChange={(e) => setSelectedCountry(e.target.value)}
+        >
+          <option value="Australia">Australia</option>
+          <option value="Canada">Canada</option>
+          <option value="France">France</option>
+          <option value="United States">United States</option>
+          <option value="New Zealand">New Zealand</option>
+          <option value="Norway">Norway</option>
+          <option value="United Kingdom">United Kingdom</option>
+          <option value="Italy">Italy</option>
+          <option value="Japan">Japan</option>
         </select>
       </div>
 
       <div>
         <h1>Property Type</h1>
-        <select className="select select-primary w-full max-w-xs text-white mt-2">
-          <option disabled selected>
-            House
-          </option>
-          <option>Resort</option>
-          <option>Hotel</option>
+        <select
+          className="select select-primary w-full max-w-xs text-white mt-2"
+          value={selectedProperty}
+          onChange={(e) => setSelectedProperty(e.target.value)}
+        >
+          <option value={"House"}>House</option>
+          <option value={"Resort"}>Resort</option>
+          <option value={"Hotel"}>Hotel</option>
         </select>
       </div>
 
