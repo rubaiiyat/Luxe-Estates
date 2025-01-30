@@ -2,6 +2,7 @@ import React from "react";
 import { IoLocation, IoBedSharp } from "react-icons/io5";
 import { SlSizeFullscreen } from "react-icons/sl";
 import { FaBath } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Property = ({ property }) => {
   const {
@@ -64,9 +65,12 @@ const Property = ({ property }) => {
             </div>
 
             <div className="card-actions ">
-              <button className="btn btn-primary text-white md:text-lg">
+              <Link
+                to={`/properties/details/${id}`}
+                className="btn btn-primary text-white md:text-lg"
+              >
                 View Property
-              </button>
+              </Link>
             </div>
           </div>
         </div>

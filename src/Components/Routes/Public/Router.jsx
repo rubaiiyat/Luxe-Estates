@@ -7,6 +7,8 @@ import About from "../../Pages/About/About";
 import Contact from "../../Pages/Contact/Contact";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Register/Register";
+import Details from "../../Pages/Details/Details";
+import PrivateRoute from "../Private/PrivateRoute";
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -19,8 +21,17 @@ const Router = createBrowserRouter([
       },
       {
         path: "/properties",
-        loader: () => fetch("properties.json"),
+        loader: () => fetch("/properties.json"),
         element: <Properties></Properties>,
+      },
+      {
+        path: "/properties/details/:id",
+
+        element: (
+          <PrivateRoute>
+            <Details></Details>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/about",

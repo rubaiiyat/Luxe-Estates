@@ -19,9 +19,11 @@ const githubProvider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   //User Register Option
   const createUser = (email, password, name, url) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
         return updateProfile(result.user, {
@@ -30,6 +32,7 @@ const AuthProvider = ({ children }) => {
         }).then(() => {
           const updatedUser = auth.currentUser;
           setUser(updatedUser);
+
           console.log("User Created and profile updated");
         });
       })
@@ -40,6 +43,7 @@ const AuthProvider = ({ children }) => {
 
   // User Sign in Option
   const logIn = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password)
       .then((result) => {
         setUser(result.user);
@@ -51,6 +55,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const logInWithGoogle = () => {
+    setLoading(true);
     return signInWithPopup(auth, googleProvider)
       .then((result) => {
         console.log(result);
@@ -61,6 +66,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const logInWithGithub = () => {
+    setLoading(true);
     return signInWithPopup(auth, githubProvider)
       .then((result) => {
         const user = result.user;
@@ -73,6 +79,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const logOut = () => {
+    setLoading(true);
     signOut(auth)
       .then((result) => {
         console.log("Logged out");
@@ -85,12 +92,14 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setLoading(false);
     });
     return () => unSubscribe();
   }, []);
 
   const authInfo = {
     user,
+    loading,
     createUser,
     logIn,
     logInWithGoogle,
