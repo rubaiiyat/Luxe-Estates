@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useActionState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { authContext } from "../AuthProvider/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(authContext);
+
+  const handleLogout = () => {
+    logOut();
+  };
+
   const links = (
     <>
       <li>
@@ -57,9 +65,50 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1 text-white">{links}</ul>
         </div>
         <div className="navbar-end">
-          <Link to={"/login"} className="btn btn-primary">
-            Login
-          </Link>
+          {user ? (
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 h-10 rounded-full overflow-hidden">
+                  {user?.photoURL ? (
+                    <img
+                      src={user.photoURL}
+                      alt="Profile"
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <span className="flex items-center justify-center w-full h-full bg-gray-300 text-xs text-black">
+                      Profile
+                    </span>
+                  )}
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              >
+                <li>
+                  <a className="justify-between">
+                    Profile
+                    <span className="badge">New</span>
+                  </a>
+                </li>
+                <li>
+                  <a>Settings</a>
+                </li>
+                <li>
+                  <a onClick={handleLogout}>Logout</a>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <Link to={"/login"} className="btn btn-primary">
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>

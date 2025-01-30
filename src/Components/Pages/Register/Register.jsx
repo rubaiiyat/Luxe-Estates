@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { authContext } from "../../AuthProvider/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
 
 const Register = () => {
   const { createUser } = useContext(authContext);
@@ -14,7 +15,23 @@ const Register = () => {
     const email = form.get("email");
     const password = form.get("password");
 
-    createUser(email, password);
+    if (password.length < 6) {
+      toast.error("Password should be at least 6 characters");
+    } else if (!/[a-z]/.test(password)) {
+      toast.error("Password should be at least one lowercase");
+    } else if (!/[A-Z]/.test(password)) {
+      toast.error("Password should be at least one uppercase");
+    } else if (!/[0-9]/.test(password)) {
+      toast.error("Password should be at least one number");
+    } else {
+      createUser(email, password, name, url)
+        .then(() => {
+          toast.success("Account created successfully");
+        })
+        .catch((error) => {
+          toast.error("Already have an account");
+        });
+    }
   };
 
   return (
@@ -28,6 +45,9 @@ const Register = () => {
           onSubmit={handleRegister}
           className="bg-base-200 shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-auto"
         >
+          <div>
+            <ToastContainer></ToastContainer>
+          </div>
           <div className="mb-4">
             <label className="block text-white text-sm font-bold mb-2">
               Full Name
@@ -36,6 +56,7 @@ const Register = () => {
               type="text"
               placeholder="Enter Your Name"
               name="fullname"
+              required
               className="input input-bordered input-primary w-full "
             />
           </div>
@@ -47,6 +68,7 @@ const Register = () => {
               type="url"
               placeholder="Enter The Photo Url"
               name="photoUrl"
+              required
               className="input input-bordered input-primary w-full "
             />
           </div>
@@ -58,6 +80,7 @@ const Register = () => {
               type="email"
               placeholder="Enter Your Email"
               name="email"
+              required
               className="input input-bordered input-primary w-full "
             />
           </div>
@@ -69,6 +92,7 @@ const Register = () => {
               type="password"
               placeholder="Enter Your Password"
               name="password"
+              required
               className="input input-bordered input-primary w-full"
             />
 
