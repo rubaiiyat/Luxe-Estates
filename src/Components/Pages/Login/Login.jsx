@@ -6,7 +6,8 @@ import { authContext } from "../../AuthProvider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
-  const { user, logIn, logInWithGoogle } = useContext(authContext);
+  const { user, logIn, logInWithGoogle, logInWithGithub } =
+    useContext(authContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -26,6 +27,16 @@ const Login = () => {
 
   const handleloginWithGoogle = () => {
     logInWithGoogle()
+      .then(() => {
+        toast.success("Logged in successfull");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+
+  const handleloginWithGithub = () => {
+    logInWithGithub()
       .then(() => {
         toast.success("Logged in successfull");
       })
@@ -99,7 +110,7 @@ const Login = () => {
             <button onClick={handleloginWithGoogle} className="">
               <FcGoogle />
             </button>
-            <button>
+            <button onClick={handleloginWithGithub}>
               {" "}
               <FaGithub />
             </button>
