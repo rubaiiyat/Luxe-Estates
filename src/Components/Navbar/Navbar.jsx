@@ -74,11 +74,13 @@ const Navbar = () => {
               >
                 <div className="w-10 h-10 rounded-full overflow-hidden">
                   {user?.photoURL ? (
-                    <img
-                      src={user.photoURL}
-                      alt="Profile"
-                      className="w-full h-full object-cover"
-                    />
+                    <div>
+                      <img
+                        src={user.photoURL}
+                        alt="Profile"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                   ) : (
                     <span className="flex items-center justify-center w-full h-full bg-gray-300 text-xs text-black">
                       Profile
@@ -92,7 +94,7 @@ const Navbar = () => {
               >
                 <li>
                   <a className="justify-between">
-                    Profile
+                    {user ? <h1>{user.displayName}</h1> : "Empty"}
                     <span className="badge">New</span>
                   </a>
                 </li>

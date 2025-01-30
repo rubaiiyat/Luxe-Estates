@@ -6,7 +6,7 @@ import { authContext } from "../../AuthProvider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
-  const { user, logIn } = useContext(authContext);
+  const { user, logIn, logInWithGoogle } = useContext(authContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -23,6 +23,17 @@ const Login = () => {
         toast.error(error);
       });
   };
+
+  const handleloginWithGoogle = () => {
+    logInWithGoogle()
+      .then(() => {
+        toast.success("Logged in successfull");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+
   return (
     <div className="mt-5 mb-10">
       <h1 className="text-center text-white text-4xl mb-5 font-bold">
@@ -85,7 +96,7 @@ const Login = () => {
           </div>
 
           <div className="flex gap-5 justify-center text-2xl">
-            <button>
+            <button onClick={handleloginWithGoogle} className="">
               <FcGoogle />
             </button>
             <button>
