@@ -1,14 +1,10 @@
-import React from "react";
-import { Helmet } from "react-helmet";
+import React, { useEffect } from "react";
 
 const MyComponent = ({ title }) => {
-  return (
-    <div>
-      <Helmet>
-        <title>{title}</title>
-      </Helmet>
-    </div>
-  );
+  useEffect(() => {
+    document.title = `${title}`;
+  }, [title]);
+  return <div></div>;
 };
 
 export default MyComponent;
