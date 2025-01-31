@@ -9,6 +9,7 @@ import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Register/Register";
 import Details from "../../Pages/Details/Details";
 import PrivateRoute from "../Private/PrivateRoute";
+import MyComponent from "../../Layouts/MyComponent";
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -17,37 +18,70 @@ const Router = createBrowserRouter([
       {
         path: "/",
         loader: () => fetch("/properties.json"),
-        element: <Home></Home>,
+        element: (
+          <>
+            <MyComponent title={"Home"}></MyComponent>
+            <Home></Home>
+          </>
+        ),
       },
       {
         path: "/properties",
         loader: () => fetch("/properties.json"),
-        element: <Properties></Properties>,
+        element: (
+          <>
+            <MyComponent title={"Properties List"}></MyComponent>
+            <Properties></Properties>
+          </>
+        ),
       },
       {
         path: "/properties/details/:id",
 
         element: (
-          <PrivateRoute>
-            <Details></Details>
-          </PrivateRoute>
+          <>
+            <MyComponent title={"Product Details"}></MyComponent>
+            <PrivateRoute>
+              <Details></Details>
+            </PrivateRoute>
+          </>
         ),
       },
       {
         path: "/about",
-        element: <About></About>,
+        element: (
+          <>
+            <MyComponent title={"About"}></MyComponent>
+            <About></About>
+          </>
+        ),
       },
       {
         path: "/contact",
-        element: <Contact></Contact>,
+        element: (
+          <>
+            <MyComponent title={"Contact"}></MyComponent>
+            <Contact></Contact>
+          </>
+        ),
       },
       {
         path: "/login",
-        element: <Login></Login>,
+        element: (
+          <>
+            <MyComponent title={"Login"}></MyComponent>
+            <Login></Login>
+          </>
+        ),
       },
       {
         path: "/register",
-        element: <Register></Register>,
+        element: (
+          <>
+            <MyComponent title={"Register"}></MyComponent>
+            <Register></Register>
+          </>
+        ),
       },
     ],
   },
