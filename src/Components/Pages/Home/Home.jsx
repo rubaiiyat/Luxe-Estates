@@ -8,13 +8,9 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
 
-import { IoLocation, IoBedSharp } from "react-icons/io5";
-import { SlSizeFullscreen } from "react-icons/sl";
-import { FaBath } from "react-icons/fa";
-
 const Home = () => {
   const properties = useLoaderData();
-  const displayedProperties = properties.slice(0, 6); // Show 12 properties in rotation
+  const displayedProperties = properties.slice(0, 6);
 
   return (
     <div className="mb-20">
