@@ -10,10 +10,12 @@ import Register from "../../Pages/Register/Register";
 import Details from "../../Pages/Details/Details";
 import PrivateRoute from "../Private/PrivateRoute";
 import MyComponent from "../../Layouts/MyComponent";
+import ErrorPage from "../../Pages/Error/ErrorPage";
 const Router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
