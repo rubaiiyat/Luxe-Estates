@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaEye, FaEyeSlash } from "react-icons/fa";
 import { authContext } from "../../AuthProvider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
   const { logIn, logInWithGoogle, logInWithGithub } = useContext(authContext);
-
+  const [showPassword, setShowPassword] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -75,15 +75,23 @@ const Login = () => {
             />
           </div>
           <div className="mb-6">
-            <label className="block text-white text-sm font-bold mb-2">
-              Password
-            </label>
-            <input
-              type="password"
-              placeholder="Enter Your Password"
-              name="password"
-              className="input input-bordered input-primary w-full"
-            />
+            <div className="relative">
+              <label className="block text-white text-sm font-bold mb-2">
+                Password
+              </label>
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter Your Password"
+                name="password"
+                className="input input-bordered input-primary w-full"
+              />
+              <p
+                onClick={() => setShowPassword((pass) => !pass)}
+                className="absolute top-11 right-2 text-xl text-white cursor-pointer "
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </p>
+            </div>
 
             <a href="#" className="text-primary ">
               <p className="mt-2">Forgot Password ?</p>

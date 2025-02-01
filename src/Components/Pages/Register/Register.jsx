@@ -2,9 +2,12 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { authContext } from "../../AuthProvider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   const { createUser } = useContext(authContext);
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -33,6 +36,8 @@ const Register = () => {
         });
     }
   };
+
+  console.log(showPassword);
 
   return (
     <div className="mt-5 mb-10">
@@ -85,16 +90,24 @@ const Register = () => {
             />
           </div>
           <div className="mb-6">
-            <label className="block text-white text-sm font-bold mb-2">
-              Password
-            </label>
-            <input
-              type="password"
-              placeholder="Enter Your Password"
-              name="password"
-              required
-              className="input input-bordered input-primary w-full"
-            />
+            <div className="relative">
+              <label className="block text-white text-sm font-bold mb-2">
+                Password
+              </label>
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter Your Password"
+                name="password"
+                required
+                className="input input-bordered input-primary w-full"
+              />
+              <p
+                onClick={() => setShowPassword((pass) => !pass)}
+                className="absolute top-11 right-2 text-xl text-white cursor-pointer "
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </p>
+            </div>
 
             <p className="mt-2">
               Already have an account ?
